@@ -1,0 +1,43 @@
+extends layout
+
+block content
+	h1= title
+	div(class="row ")
+		div(class="col-md-6")
+			section
+				blockquote
+					p Nouveau job
+				form(role="form")
+					div(class="form-group")
+						label(for="name") Nom
+						input(type="text", class="form-control", id="name", placeholder="Nom")
+					div(class="form-group")
+						label(for="goals") Maven 'goals'	
+						input(type="text", class="form-control", id="goals", placeholder="clean install")
+					div(class="form-group")
+						label(for="profile") Maven 'profile'
+						input(type="text", class="form-control", id="profile", placeholder="full")
+					div(class="form-group")
+						label(for="folder") Maven 'goals'
+						input(type="file", class="form-control", id="folder")
+
+
+		div(class="col-md-6")
+			section
+				blockquote
+					p Jobs
+				table(class="table table-striped")
+					thead
+						tr
+							th Nom
+							th Args'
+							th Prof'
+							th _
+					tbody
+						tr
+							td Nom
+							td args
+							td prof
+							td 
+								button(class="btn btn-xs btn-success" type="button") >
+
