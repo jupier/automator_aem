@@ -1,4 +1,5 @@
 var express = require('express');
+var expressValidator = require('express-validator');
 var path = require('path');
 var favicon = require('static-favicon');
 var logger = require('morgan');
@@ -6,12 +7,25 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
 var io = require('socket.io');
-var nedb = require('nedb');
 
 var index = require('./routes/index');
 var deploiement = require('./routes/deploiement');
 
+var db = require('./datastore');
+
 var app = express();
+
+// validator extension
+expressValidator.validator.extend('jobAllreadyExists', function (str) {
+    console.log("TETE " + str);
+    var cb = function(err, docs) {
+        console.log("FDP DE CALLBACK");
+        return 2+2;
+    }
+    console.log(db.find({name: str}, cb));
+    console.log("TETE2");
+    return true;
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,6 +34,7 @@ app.set('view engine', 'jade');
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(expressValidator([]));
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -58,35 +73,9 @@ app.use(function(err, req, res, next) {
     });
 });
 
-// datastore
-var db = new nedb({filename: 'db/automator_db'});
-db.loadDatabase(function(err){
-    if (err != null) console.log("loadDatabase error : " + err);
-});
-
 // socket.io configuration
 var server = http.Server(app);
 var socket = io(server);
-socket.on('connection', function(socket){
-
-    socket.on('cmd', function(cmd) {
-        
-        db.insert(cmd, function (err, newDoc) {
-            console.log(err);
-            console.log(newDoc);
-        });
-
-        db.find({id: '123344'}, function(err, docs){
-            console.log(err);
-            console.log(docs);
-        });
-
-    });
-
-    socket.on('disconnect', function() {
-
-    });
-
-});
+socket.on('connection', require('./socket'));
 
 module.exports = server;
