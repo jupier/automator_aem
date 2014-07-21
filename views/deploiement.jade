@@ -30,6 +30,8 @@ block content
 								p= error.msg
 					if success != null
 						div(class="alert alert-success", role="alert")= success
+					if error != null
+						div(class="alert alert-danger", role="alert")= error
 					button(type="submit", class="btn btn-default") Submit
 
 
@@ -41,10 +43,10 @@ block content
 					thead
 						tr
 							th Nom
-							th Args'
-							th Prof'
-							th _
-					tbody
+							th Goals
+							th Profile
+							th Run
+					tbody(id="deploiement_list")
 						tr
 							td Nom
 							td args
@@ -52,3 +54,21 @@ block content
 							td 
 								button(class="btn btn-xs btn-success" type="button") >
 
+	script(type='text/javascript').
+		$(document).ready(function(){
+			$.ajax({
+				url: "/deploiement/list",
+				success: function(data){
+					for (var i = 0; i < data.length; i++)
+					{
+						var html = "<tr>";
+						html += "<td>" + data[i].deploiement_name + "</td>";
+						html += "<td>" + data[i].deploiement_goals + "</td>";
+						html += "<td>" + data[i].deploiement_profile + "</td>";
+						html += "<td><button class=\"btn btn-xs btn-success\" type=\"button\"> > </button>";
+						html += "</tr>";
+						$("#deploiement_list").append(html);
+					}
+				},
+			});
+		});

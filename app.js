@@ -15,18 +15,6 @@ var db = require('./datastore');
 
 var app = express();
 
-// validator extension
-expressValidator.validator.extend('jobAllreadyExists', function (str) {
-    console.log("TETE " + str);
-    var cb = function(err, docs) {
-        console.log("FDP DE CALLBACK");
-        return 2+2;
-    }
-    console.log(db.find({name: str}, cb));
-    console.log("TETE2");
-    return true;
-});
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
