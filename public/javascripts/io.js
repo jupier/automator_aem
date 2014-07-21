@@ -5,5 +5,15 @@ var cmd = {
 };
 */
 
-var socket = io();
-socket.emit('cmd', {id : '123344', args : ['4', '5']});
+$(document).ready(function() {
+	var socket = io();
+
+	$("body").delegate(".btn-cmd", "click", function() {
+		socket.emit('cmd', {id : $(this).attr('id')});
+		socket.on('cmd_data', function(data){
+			console.log(data);
+		});
+	});
+});
+
+//socket.emit('cmd', {id : '123344', args : ['4', '5']});

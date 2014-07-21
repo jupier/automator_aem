@@ -47,12 +47,6 @@ block content
 							th Profile
 							th Run
 					tbody(id="deploiement_list")
-						tr
-							td Nom
-							td args
-							td prof
-							td 
-								button(class="btn btn-xs btn-success" type="button") >
 
 	script(type='text/javascript').
 		$(document).ready(function(){
@@ -65,7 +59,7 @@ block content
 						html += "<td>" + data[i].deploiement_name + "</td>";
 						html += "<td>" + data[i].deploiement_goals + "</td>";
 						html += "<td>" + data[i].deploiement_profile + "</td>";
-						html += "<td><button class=\"btn btn-xs btn-success\" type=\"button\"> > </button>";
+						html += "<td><button class=\"btn-cmd btn btn-xs btn-success\" type=\"button\" id=\"cmd_" + data[i]._id + "\"> > </button>";
 						html += "</tr>";
 						$("#deploiement_list").append(html);
 					}
