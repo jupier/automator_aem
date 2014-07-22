@@ -54,7 +54,6 @@ router.get('/add', function(req, res) {
 });
 
 router.get('/list', function(req, res) {
-	console.log("test");
 	db.find({deploiement_name:{$exists: true}}, function(err, docs){
 		res.json(docs);
 	})
