@@ -40,5 +40,16 @@ html
                             a(href="#") Action
     div(class="container")
         block content
+
+    div(id="terminal")
+        button(id="terminal_up", class="btn btn-success", type="button")
+            span(class="glyphicon glyphicon-chevron-up")
+        button(id="terminal_down", class="btn btn-success hide", type="button")
+            span(class="glyphicon glyphicon-chevron-down")
+        div(id="terminal_toolbar", class="btn-group hide")
+            button(id="terminal_clean", class="btn btn-default", type="button") Nettoyer
+            button(class="btn btn-default", type="button") Agrandir
+        textarea(class="form-control hide", rows="15", disabled)
     
     script(src='/javascripts/io.js')
+    script(src='/javascripts/terminal.js')

@@ -11,7 +11,8 @@ $(document).ready(function() {
 	$("body").delegate(".btn-cmd", "click", function() {
 		socket.emit('cmd', {id : $(this).attr('id')});
 		socket.on('cmd_data', function(data){
-			console.log(data);
+			var textarea = $("#terminal").find('textarea').first();
+			$(textarea).val($(textarea).val() + data.data);
 		});
 	});
 });

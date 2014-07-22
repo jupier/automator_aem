@@ -2,3 +2,21 @@ section {
 	padding: 10px;
 	background: #dedede;
 }
+
+#terminal {
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	color: white;
+	text-align: center;
+	position: absolute;
+	background: rgba(0,0,0,0.8);
+}
+
+#terminal > button {
+	margin: 5px;
+}
+
+.hide {
+	display: none;
+}
