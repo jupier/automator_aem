@@ -13,21 +13,24 @@ var socketCb = function (socket){
             
             if (docs != [])
             {
+                socket.emit('cmd_ran', {id: cmd.id});
                 exec('mvn', function (error, stdout, stderr) {
                     if (stderr != "")
-                        socket.emit('cmd_data', {data: stderr});
+                        socket.emit('cmd_error', {data: stderr});
                     else
                     {
                         var doc = docs[0];
                         var child = spawn('mvn', [doc.deploiement_goals, doc.deploiement_profile]);
                         child.stdout.on('data', function(data) {
+                            console.log("test");
                             socket.emit('cmd_data', {data: data.toString()});
                         });
                     }
-                   
-                 });
+                });
             }
-
+            else
+                socket.emit('cmd_error', {data: "Erreur d'exécution (" + cmd.id + ")!"});
+            socket.emit('cmd_stop', {id: cmd.id});
         });
     });
 }
