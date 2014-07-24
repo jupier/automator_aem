@@ -30,8 +30,12 @@ html
                     a() BackUp
                 li
                     a() Vlt
-                li
-                    a() Configuration
+                if path === "/configuration"
+                    li(class="active") 
+                        a Configuration
+                else
+                    li 
+                        a(href="/configuration") Configuration
                 //li(class="dropdown")
                     a(class="dropdown-toggle", data-toggle="dropdown", href="#") Configuration
                         span(class="caret")

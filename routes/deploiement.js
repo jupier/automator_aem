@@ -2,11 +2,6 @@ var express = require('express');
 var router = express.Router();
 var db = require("../datastore");
 
-/* GET home page. */
-router.get('/', function(req, res) {
-	res.render('deploiement', { title: 'Deploiement', path: req.originalUrl });
-});
-
 var argumentsFormatter = function(req, validationErrors, error, success) {
 	return {
 		success: success,
@@ -19,6 +14,10 @@ var argumentsFormatter = function(req, validationErrors, error, success) {
 	    path: req.originalUrl
 	};
 };
+
+router.get('/', function(req, res) {
+	res.render('deploiement', argumentsFormatter(req, null, null, null));
+});
 
 router.get('/add', function(req, res) {
 	req.checkQuery('name', 'Le nom est requis (champ alphanuméric entre 5 et 15 caractères)').notEmpty().isLength(5, 15);

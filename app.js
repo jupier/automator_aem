@@ -10,6 +10,7 @@ var io = require('socket.io');
 
 var index = require('./routes/index');
 var deploiement = require('./routes/deploiement');
+var configuration = require('./routes/configuration');
 
 var db = require('./datastore');
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/deploiement', deploiement);
+app.use('/configuration', configuration);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
