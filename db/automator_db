@@ -1,5 +1,14 @@
 {"deploiement_name":"zerzerze","deploiement_goals":"zerzer","deploiement_profile":"zerzer","deploiement_folder":"18 06 2014 Mr R Pieropan acte de caution F1 51 rue Michel Ange 34070.docx","_id":"6Yp9hYaVSfZHXYXm"}
+{"check_cmd":"maven","isOk":false,"_id":"91xTgcMWkcuoX8OI"}
+{"check_cmd":"vault","isOk":false,"_id":"9X9z5PbMaLAHAc0F"}
 {"deploiement_name":"mvn full","deploiement_goals":"clean install","deploiement_profile":"full","deploiement_folder":"[EDF Site RC] 20140617 CR Atelier segmentation et targeting.docx","_id":"J2CKrXiUvM2LLGZz"}
 {"deploiement_name":"azeaze","deploiement_goals":"azeaze","deploiement_profile":"azeaze","deploiement_folder":"18 06 2014 Mr R Pieropan acte de caution F1 51 rue Michel Ange 34070 (1).docx","_id":"JTEXANbDHfq50Nx7"}
 {"deploiement_name":"azeazeqsdfq","deploiement_goals":"azeazesqd","deploiement_profile":"azeazedf","deploiement_folder":"acs-aem-commons-content-1.6.2.zip","_id":"KYwP7yayeTqVgujV"}
+{"check_cmd":"java","isOk":true,"_id":"boXRNP5tWV4zsaRO"}
 {"deploiement_name":"sdfgsdfg","deploiement_goals":"sdfgsdfg","deploiement_profile":"sdfsdf","deploiement_folder":"[EDF Site RC] Atelier Workflow du 19062014.pptx","_id":"q7sM6MGhdKGMmp7V"}
+{"check_cmd":"maven","isOk":false,"_id":"91xTgcMWkcuoX8OI"}
+{"check_cmd":"vault","isOk":false,"_id":"9X9z5PbMaLAHAc0F"}
+{"check_cmd":"java","isOk":true,"_id":"boXRNP5tWV4zsaRO"}
+{"check_cmd":"maven","isOk":false,"_id":"91xTgcMWkcuoX8OI"}
+{"check_cmd":"vault","isOk":false,"_id":"9X9z5PbMaLAHAc0F"}
+{"check_cmd":"java","isOk":true,"_id":"boXRNP5tWV4zsaRO"}

@@ -7,12 +7,12 @@ block content
 			section
 				blockquote
 					p Check de la configuration
-				h4
-					span(class="label label-default") Java 
-						span(class="glyphicon glyphicon-remove")
-				h4
-					span(class="label label-default") Maven 
-						span(class="glyphicon glyphicon-remove")
-				h4
-					span(class="label label-default") VLT 
-						span(class="glyphicon glyphicon-remove")
+				each cmd in cmds
+					div(id="check_" + cmd)
+						header
+							h4
+								span(id="check_" + cmd + "_label", class="label label-default")= cmd  
+									img(id="check_" + cmd + "_loading", src="images/loading.gif", class="hide")
+						section(id="check_" + cmd + "_error")
+					hr
+

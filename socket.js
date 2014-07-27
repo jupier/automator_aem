@@ -15,14 +15,13 @@ var socketCb = function (socket){
             {
                 socket.emit('cmd_ran', {id: cmd.id});
                 exec('mvn', function (error, stdout, stderr) {
-                    if (stderr != "")
+                    if (error !== null)
                         socket.emit('cmd_error', {data: stderr});
                     else
                     {
                         var doc = docs[0];
                         var child = spawn('mvn', [doc.deploiement_goals, doc.deploiement_profile]);
                         child.stdout.on('data', function(data) {
-                            console.log("test");
                             socket.emit('cmd_data', {data: data.toString()});
                         });
                     }
@@ -31,6 +30,35 @@ var socketCb = function (socket){
             else
                 socket.emit('cmd_error', {data: "Erreur d'exécution (" + cmd.id + ")!"});
             socket.emit('cmd_stop', {id: cmd.id});
+        });
+    });
+
+    socket.on('check', function(data) {
+
+        // beurk
+        var cmdList = new Array();
+        cmdList['java'] = {
+            cmd : 'java -version',
+        };
+        cmdList['maven'] = {
+            cmd : 'mvn'
+        };
+        cmdList['vault'] = {
+            cmd : 'vlt'
+        };
+        //
+
+        exec(cmdList[data.cmd].cmd, function (error, stdout, stderr) {
+            if (error !== null)
+            {
+                db.update({check_cmd: data.cmd}, {check_cmd: data.cmd, isOk: false}, {upsert: true});
+                socket.emit('check_error', {cmd: data.cmd, data: stderr});
+            }
+            else
+            {
+                db.update({check_cmd: data.cmd}, {check_cmd: data.cmd, isOk: true}, {upsert: true});
+                socket.emit('check_success', {cmd: data.cmd, data: (stdout == "" ? stderr : stdout)});
+            }
         });
     });
 }

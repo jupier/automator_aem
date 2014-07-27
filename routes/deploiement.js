@@ -11,7 +11,7 @@ var argumentsFormatter = function(req, validationErrors, error, success) {
 	    goals: req.query.goals || '', 
 	    profile: req.query.profile || '',
 	    title: 'Deploiement',
-	    path: req.originalUrl
+	    path: req.originalUrl,
 	};
 };
 
